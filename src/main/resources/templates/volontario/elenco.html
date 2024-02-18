@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.5.1/css/all.css} "/>
+	<title>Biblioteca Uartiere</title>
+</head>
+<body>
+	<header class="alert alert-info text-center"><h1>ELENCO DELLA LIBRERIA</h1></header>
+	<nav th:replace="fragments/navbar :: navbar('volontario/elenco')"></nav>	
+		<!-- Se non esistono delle assegnazioni allora mostrerà la seguente dicitura -->
+		<div class="alert alert-primary" role="alert" th:if="${elencoLibri.size()==0}">
+		<h3 >Nessun prodotto trovato</h3>
+		</div>
+		
+		<!-- Se esistono delle assegnazioni allora mostrerà la seguente tabella -->
+		<table class="table table-success table-striped table-hover" th:if="${elencoLibri.size()>0}" >
+			<thead>
+				<tr>
+					<th>Codice Libro</th>
+					<th>Titolo</th>
+					<th>Autore</th>
+					<th>Editore</th>
+					<th>Genere</th>
+					<th>Anno</th>
+					<th>Numero Pagine</th>
+					<th>Stato</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each="l:${elencoLibri}">
+					<td th:text="${l.codiceLibro}"></td>
+					<td th:text="${l.titolo}"></td>
+					<td th:text="${l.autore}"></td>
+					<td th:text="${l.editore}"></td>
+					<td th:text="${l.genere}"></td>
+					<td th:text="${l.anno}"></td>
+					<td th:text="${l.nrPagine}"></td>
+					<td th:text="${l.stato}"></td>
+				</tr>
+			</tbody>
+		</table>		
+		
+		<input type="button" onclick="location.href = '/Volontario'" value="Indietro">
+	
+		<script th:src="@{/webjars/bootstrap/5.3.2/css/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

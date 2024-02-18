@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Inserimento</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.5.1/css/all.css} " />
+</head>
+
+<body>
+	<header class="alert alert-info text-center"><h1>INSERISCI LIBRO</h1></header>
+	<nav th:replace="fragments/navbar :: navbar('volontario/inserimento')"></nav>
+	
+	<form id="form-assegnazione" th:action="@{/Volontario/aggiungi-libro}" th:object="${libro}" method="post">
+		
+		<label for="codiceLibro">Codice libro:</label><br>
+		<input type="text" id="codiceLibro" name="codiceLibro"><br>
+		
+		<label for="titolo">Titolo:</label><br>
+		<input type="text" id="titolo" name="titolo"><br>
+		
+		<label for="autore">Autore:</label><br>
+		<input type="text" id="autore" name="autore"><br>
+		
+		<label for="editore">Editore:</label><br>
+		<input type="text" id="editore" name="editore"><br>
+		
+<!--		<label for="stato">Stato:</label><br>-->
+<!--		<input type="text" id="stato" name="stato"><br>-->
+		
+		<label for="genere">Genere:</label><br>
+		<input type="text" id="genere" name="genere"><br>
+		
+		<label for="anno">Anno edizione:</label><br>
+		<input type="text" id="anno" name="anno"><br>
+		
+		<label for="descrizione">Descrizione:</label><br>
+		<input type="text" id="descrizione" name="descrizione"><br>
+		
+		<label for="nrPagine">Numero pagine:</label><br>
+		<input type="number" name="nrPagine" title="nrPagine"/><br><br>
+		
+		<input type="submit" value="Invia">
+	</form>
+	<script th:src="@{/webjars/bootstrap/5.3.2/css/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
