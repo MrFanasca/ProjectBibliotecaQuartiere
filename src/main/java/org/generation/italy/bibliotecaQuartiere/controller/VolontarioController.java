@@ -1,6 +1,8 @@
 package org.generation.italy.bibliotecaQuartiere.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.generation.italy.bibliotecaQuartiere.model.Assegnazione;
@@ -68,6 +70,8 @@ public class VolontarioController {
 	public String cambiaStato(@PathVariable String id) {
 		
 		Optional<Libro> optLibro = libroRepository.findById(id);
+		List<Assegnazione> listAssegnazione = assegnazioneRepository.findByCodiceLibroLike(id);
+		
 		if (optLibro.isPresent()) {
 			
 			Libro l = optLibro.get();
@@ -75,9 +79,15 @@ public class VolontarioController {
 			if(l.getStato().equals("PR")) {
 				
 				l.setStato("TC");
+				for (Assegnazione a:listAssegnazione) {
+					a.setDataConsegna(LocalDate.now());
+				}
 			} else if(l.getStato().equals("TC")) {
 				
 				l.setStato("LI");
+				for (Assegnazione a:listAssegnazione) {
+					a.setDataRestituzione(LocalDate.now());
+				}
 			}
 			libroRepository.save(l);
 			return "redirect:/Volontario";

@@ -20,30 +20,7 @@ public class AssegnazioneDao extends ADao {
 		super(jdbcConnectionToDatabase);
 		// TODO Auto-generated constructor stub
 	}
-
-//	@Autowired
-//	private DatasourceProperties datasourceProperties;
-
-//	protected Connection getConnection() {
-//        Connection connection = null;
-//
-//        try {        
-//            Class.forName(datasourceProperties.getDriver_class_name());
-//            connection = DriverManager.getConnection(
-//            		datasourceProperties.getUrl(), 
-//            		datasourceProperties.getUsername(), 
-//            		datasourceProperties.getPassword());
-//        } catch (SQLException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }  
-//        return connection;
-//
-//    }
-
+	
 	// ************************************************************************************************************************************+
 
 	private List<Assegnazione> loadAssegnazioneByQuery(PreparedStatement preparedStatement)
@@ -102,7 +79,7 @@ public class AssegnazioneDao extends ADao {
 	public void addAssegnazione(Assegnazione assegnazione) throws BibliotecaModelException {
 
 		try {
-			Triggers.checkBeforeInsertAssegnazione(assegnazione.getCodiceLibro(), assegnazione.getNumeroTessera());
+			//Triggers.checkBeforeInsertAssegnazione(assegnazione.getCodiceLibro(), assegnazione.getNumeroTessera());
 			PreparedStatement preparedStatement = this.jdbcConnectionToDatabase
 					.prepareStatement(QueryCatalog.addAssegnazione);
 

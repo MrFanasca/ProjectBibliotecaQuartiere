@@ -7,10 +7,13 @@ import org.generation.italy.bibliotecaQuartiere.servlet.model.BibliotecaModelExc
 import org.generation.italy.bibliotecaQuartiere.servlet.model.entity.Assegnazione;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.entity.Cittadino;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.entity.Libro;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Triggers {
 	
+	@Autowired
 	public static LibroDao libroDao;
+	
 	public static CittadinoDao cittadinoDao;
 	public static AssegnazioneDao assegnazioneDao;
 	

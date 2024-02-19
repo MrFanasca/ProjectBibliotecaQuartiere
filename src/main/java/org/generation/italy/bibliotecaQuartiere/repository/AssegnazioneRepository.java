@@ -15,4 +15,8 @@ public interface AssegnazioneRepository extends JpaRepository<Assegnazione, Inte
     		+ " WHERE l.stato!='LI'", nativeQuery = true)
     List<Assegnazione> findAssegnazione();
 	
+    @Query( value = "  SELECT a.* "
+    		+ "  FROM assegnazione a INNER JOIN libro l ON l.codice_libro=a.libro_codice_libro "
+    		+ " WHERE l.codice_libro = ? ", nativeQuery = true)
+    List<Assegnazione> findByCodiceLibroLike(String codiceLibro);
 }

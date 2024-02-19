@@ -21,11 +21,12 @@
 				<th>Data Prenotazione</th>
 				<th>Data Consegna</th>
 				<th>Data Restituzione</th>
-				<th>Codice Libro</th>		
+				<th>Codice Libro</th>
+				<th>Pulsante</th>		
 			</tr>
 			<c:forEach var="libro" items="${listPrenotazioni}">			
 				<tr>
-					<td><c:out value="${libro.idAssegnazione}" />   </td>
+					<td><c:out value="${libro.idAssegnazione}" /></td>
 					<td><c:out value="${libro.numeroTessera}" /></td>
 					<td><c:out value="${libro.dataPrenotazione}" /></td>
 					<td>
@@ -45,7 +46,6 @@
 						</c:if>
 					</td>
 					<td><c:out value="${libro.codiceLibro}" /></td>
-					
 				</tr>
 			</c:forEach>
 		</table>

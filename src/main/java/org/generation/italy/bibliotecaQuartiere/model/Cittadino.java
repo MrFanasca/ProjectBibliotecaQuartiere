@@ -2,6 +2,8 @@ package org.generation.italy.bibliotecaQuartiere.model;
 
 import java.util.List;
 
+import org.generation.italy.bibliotecaQuartiere.security.model.Utente;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
@@ -10,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,6 +39,10 @@ public class Cittadino {
 	@JsonBackReference
 	@OneToMany(mappedBy = "cittadino")
 	List<Assegnazione> elencoAssegnazioni;
+	
+	@JsonBackReference
+	@OneToOne
+	private Utente utente;
 
 	/***************/
 	// COSTRUTTORI //

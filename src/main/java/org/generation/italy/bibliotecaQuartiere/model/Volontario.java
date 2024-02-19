@@ -1,10 +1,15 @@
 package org.generation.italy.bibliotecaQuartiere.model;
 
+import org.generation.italy.bibliotecaQuartiere.security.model.Utente;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +27,9 @@ public class Volontario {
 	@Column(name="nominativo", columnDefinition = "varchar(35)")
 	private String nominativo;
 	
+	@JsonBackReference
+	@OneToOne
+	private Utente utente;
 //	@JsonBackReference
 //	@OneToMany(mappedBy = "volontario")
 //	List<Assegnazione> elencoAssegnazioni;
