@@ -2,7 +2,8 @@ package org.generation.italy.bibliotecaQuartiere.security.model;
 
 import java.util.Set;
 
-import org.generation.italy.testspring.model.Tessera;
+import org.generation.italy.bibliotecaQuartiere.model.Cittadino;
+import org.generation.italy.bibliotecaQuartiere.model.Volontario;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -25,7 +26,10 @@ public class Utente {
 	private String password;
 	
 	@OneToOne(mappedBy = "utente")		
-	private Utente utente;
+	private Cittadino cittadino;
+	
+	@OneToOne(mappedBy = "utente")		
+	private Volontario volontario;
 	
 	@ManyToMany(fetch = FetchType.EAGER)		//i ruoli vengono caricati contestualmente al caricamento dell'utente
 	private Set<Ruolo> ruoli;					//ogni utente può assumere più ruoli
@@ -65,29 +69,6 @@ public class Utente {
 
 	public void setRuoli(Set<Ruolo> ruoli) {
 		this.ruoli = ruoli;
-	}
-
-	//altri campi ...
-	
-	private String nome;
-	
-	private String cognome;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-	
+	}	
 	
 }

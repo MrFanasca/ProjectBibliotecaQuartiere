@@ -2,9 +2,9 @@ package org.generation.italy.bibliotecaQuartiere.security.service;
 
 import java.util.Optional;
 
-import org.generation.italy.testspring.security.DatabaseUserDetails;
-import org.generation.italy.testspring.security.model.Utente;
-import org.generation.italy.testspring.security.repository.UtenteRepository;
+import org.generation.italy.bibliotecaQuartiere.security.DatabaseUserDetails;
+import org.generation.italy.bibliotecaQuartiere.security.model.Utente;
+import org.generation.italy.bibliotecaQuartiere.security.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

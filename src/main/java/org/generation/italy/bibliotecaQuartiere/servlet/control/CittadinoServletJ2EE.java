@@ -62,6 +62,8 @@ public class CittadinoServletJ2EE extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		System.out.println("do get cittadino entrato");
 		executeAction(request, response);
 	}
 
@@ -117,7 +119,7 @@ public class CittadinoServletJ2EE extends HttpServlet {
 			request.setAttribute("listLibri", listLibri);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/elenco-libri.jsp");
-
+			System.out.println("forward cittadino");
 			dispatcher.forward(request, response);
 
 		} catch (Exception e) {

@@ -30,9 +30,6 @@ public class Volontario {
 	@JsonBackReference
 	@OneToOne
 	private Utente utente;
-//	@JsonBackReference
-//	@OneToMany(mappedBy = "volontario")
-//	List<Assegnazione> elencoAssegnazioni;
 
 	/***************/
 	// COSTRUTTORI //
