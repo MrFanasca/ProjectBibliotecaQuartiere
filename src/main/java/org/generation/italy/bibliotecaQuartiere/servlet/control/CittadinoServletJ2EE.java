@@ -26,20 +26,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = { "/servlet/cittadino/elenco-libri", "/servlet/cittadino/assegna-libro", "/servlet/cittadino/storico-libri", "/servlet/cittadino/libri-prenotati"})
 public class CittadinoServletJ2EE extends HttpServlet {
 	
-	private static final long serialVersionUID = 1L;
-
-//	@Autowired
-//	private DatasourceProperties datasourceProperties;
-//	
-//	@Autowired
-//	private CittadinoDao cittadinoDao;
-//	
-//	@Autowired
-//	private AssegnazioneDao assegnazioneDao;
-//	
-//	@Autowired
-//	private LibroDao libroDao;
-	
+	private static final long serialVersionUID = 1L;	
 	private CittadinoDao cittadinoDao;
 	private AssegnazioneDao assegnazioneDao;
 	private LibroDao libroDao;
@@ -73,16 +60,6 @@ public class CittadinoServletJ2EE extends HttpServlet {
 
 	}
 
-	/*
-	 * protected void doPut(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException { // TODO Auto-generated
-	 * method stub }
-	 * 
-	 * protected void doDelete(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException, IOException { // TODO Auto-generated
-	 * method stub }
-	 */
-
 	protected void executeAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -114,7 +91,6 @@ public class CittadinoServletJ2EE extends HttpServlet {
 		
 		try {
 
-//			testJdbcBiblioteca test = new testJdbcBiblioteca();
 			List<Libro> listLibri = libroDao.loadAllLibro();
 			request.setAttribute("listLibri", listLibri);
 
@@ -142,7 +118,6 @@ public class CittadinoServletJ2EE extends HttpServlet {
 			//Triggers.checkBeforeInsertAssegnazione(codiceLibro, nrTessera);
 			Assegnazione assegnazione = new Assegnazione(nrTessera, codiceLibro);
 			Libro libro = new Libro(codiceLibro, cambioStato);
-//			testJdbcBiblioteca test = new testJdbcBiblioteca();
 			assegnazioneDao.addAssegnazione(assegnazione);
 			libroDao.updateStato(libro);
 
@@ -151,10 +126,9 @@ public class CittadinoServletJ2EE extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		} catch (BibliotecaModelException e) {
+			
 			System.out.println(e.getMessage());
-
 		}
-
 	}
 	
 	private void actionLibriPrenotati(HttpServletRequest request, HttpServletResponse response)
@@ -172,12 +146,10 @@ public class CittadinoServletJ2EE extends HttpServlet {
 
 			dispatcher.forward(request, response);
 			
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (BibliotecaModelException e) {
+
+			System.out.println(e.getMessage());
 		}
-		
-		
-		
 	}
 	
 }

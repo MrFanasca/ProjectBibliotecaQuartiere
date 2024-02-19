@@ -25,6 +25,7 @@ public class SecurityConfiguration {
 		    .authorizeHttpRequests((requests) -> requests
 		    	//richieste GET per nuovo, modifica, elimina prodotto richiedono il ruolo admin
 		    	.requestMatchers(
+		    		
 					"/Volontario", 
 					"/Volontario/**",				//necessarie per bootstrap e font awesome		
 					"/img/**",

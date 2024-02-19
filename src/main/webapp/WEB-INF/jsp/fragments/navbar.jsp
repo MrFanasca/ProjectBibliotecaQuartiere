@@ -13,6 +13,9 @@
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" aria-current="page" href="/servlet/cittadino/libri-prenotati?numero-tessera=1">Libri Prenotati</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link text-align=right" aria-current="page" href="/logout">Logout</a>
 		        </li>       
 		      </ul>
 		    </div>
