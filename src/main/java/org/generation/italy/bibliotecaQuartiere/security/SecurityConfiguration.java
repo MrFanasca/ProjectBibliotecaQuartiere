@@ -25,24 +25,16 @@ public class SecurityConfiguration {
 		    .authorizeHttpRequests((requests) -> requests
 		    	//richieste GET per nuovo, modifica, elimina prodotto richiedono il ruolo admin
 		    	.requestMatchers(
-		    		"/",
 					"/Volontario", 
-					"/Volontario/**",
-					"/WEB-INF/jsp/**",
-					"/webjars/**",				//necessarie per bootstrap e font awesome
-					"/css/**",			
+					"/Volontario/**",				//necessarie per bootstrap e font awesome		
 					"/img/**",
 					"/error")
 				.hasAuthority("volontario")
 				
 				//richieste POST per nuovo, modifica, elimina prodotto richiedono il ruolo admin			    
 				.requestMatchers(HttpMethod.POST,
-					"/",
 					"/Volontario", 
-					"/Volontario/**",
-					"/WEB-INF/jsp/**",
-					"/webjars/**",				//necessarie per bootstrap e font awesome
-					"/css/**",			
+					"/Volontario/**",				//necessarie per bootstrap e font awesome			
 					"/img/**",
 					"/error")
 				.hasAuthority("volontario")
@@ -54,6 +46,7 @@ public class SecurityConfiguration {
 					"/",
 					"/servlet/cittadino/**",
 					"/WEB-INF/jsp/**",
+					"/WEB-INF/jsp/fragments/**",
 					"/webjars/**",				//necessarie per bootstrap e font awesome
 					"/css/**",			
 					"/img/**",

@@ -19,22 +19,19 @@ public class MainController {
 		boolean cittadino=false;
 //		model.addAttribute("utente", u);
 		for(Ruolo r:u.getRuoli()) {
-			
-			System.out.println("Ruolo: " + r.getName());
-			if (r.getName().equals("cittadino")) {
+			if (r.getName().equals("cittadino"))
 				cittadino=true;
-				System.out.println("entro cittadino/volontario");
-			}
-				
 			if (r.getName().equals("volontario"))
 				volontario=true;
 		}
 		
-		if (cittadino) {
+		if (volontario) {
 			System.out.println("ento volontario");
 			return "redirect:/Volontario";
-		} 
-		
+		} else if (cittadino) {
+			System.out.println("entro cittadino");
+			return "redirect:/servlet/cittadino/elenco-libri";
+		}
 		System.out.println("entro cittadino2");
 		return "redirect:/servlet/cittadino/elenco-libri";
 	}
