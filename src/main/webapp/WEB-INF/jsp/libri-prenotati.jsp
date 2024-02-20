@@ -12,9 +12,10 @@
 </head>
 <body>
 
-	<header class="alert alert-info text-center"><h1>Lista libri Prenotati</h1></header>
+	<header class="alert alert-info text-center" style="background-color: darkgoldenrod; color: black;"><h1>Lista libri Prenotati</h1></header>
 	<jsp:include page="fragments/navbar.jsp"></jsp:include>
-	<table class="table table-success table-striped table-hover">
+	<div style="max-width: 1270px; margin: 0 auto;">
+	<table class="table table-success table-striped table-hover table-dark">
 			<tr>
 				<th>Id Assegnazione</th>
 				<th>Numero Tessera</th>
@@ -48,7 +49,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-		
+		</div>
 	<script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
 </body>

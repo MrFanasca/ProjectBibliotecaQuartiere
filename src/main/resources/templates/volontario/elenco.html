@@ -4,18 +4,21 @@
 	<meta charset="ISO-8859-1">
 	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.5.1/css/all.css} "/>
+	<link th:rel="stylesheet" href="/css/main.css">
 	<title>Biblioteca Uartiere</title>
 </head>
 <body>
-	<header class="alert alert-info text-center"><h1>ELENCO DELLA LIBRERIA</h1></header>
-	<nav th:replace="fragments/navbar :: navbar('volontario/elenco')"></nav>	
+	<header class="alert alert-info text-center" style="background-color: darkgoldenrod; color: black;"><h1>ELENCO DELLA LIBRERIA</h1></header>
+	
+	<nav th:replace="fragments/navbar :: navbar('volontario/elenco')"></nav>
+	<div style="max-width: 1270px; margin: 0 auto;">	
 		<!-- Se non esistono delle assegnazioni allora mostrerà la seguente dicitura -->
-		<div class="alert alert-primary" role="alert" th:if="${elencoLibri.size()==0}">
+		<div class="alert alert-warning" role="alert" th:if="${elencoLibri.size()==0}">
 		<h3 >Nessun prodotto trovato</h3>
 		</div>
 		
 		<!-- Se esistono delle assegnazioni allora mostrerà la seguente tabella -->
-		<table class="table table-success table-striped table-hover" th:if="${elencoLibri.size()>0}" >
+		<table class="table table-success table-striped table-hover table-dark" th:if="${elencoLibri.size()>0}" >
 			<thead>
 				<tr>
 					<th>Codice Libro</th>
@@ -44,7 +47,7 @@
 		</table>		
 		
 		<input type="button" onclick="location.href = '/Volontario'" value="Indietro">
-	
+	</div>
 		<script th:src="@{/webjars/bootstrap/5.3.2/css/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

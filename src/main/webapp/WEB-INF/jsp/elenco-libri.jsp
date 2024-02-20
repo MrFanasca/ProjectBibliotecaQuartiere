@@ -32,11 +32,12 @@
       
  <!--  *******************************		 	***************************************************** -->
      
-<header class="alert alert-info text-center"><h1>BENVENUTO CITTADINO</h1><br><h3>Lista libri</h3></header>
+<header class="alert alert-info text-center" style="background-color: darkgoldenrod; color: black;"><h1>BENVENUTO CITTADINO</h1><br><h3>Lista libri</h3></header>
 	
-	<div align="center">
+	
 		<jsp:include page="fragments/navbar.jsp"></jsp:include>
-		<table class="table table-success table-striped table-hover">
+		<div style="max-width: 1270px; margin: 0 auto;">
+		<table class="table table-success table-striped table-hover table-dark">
 			
 			<tr>
 				<th>Codice Libro</th>
@@ -65,7 +66,7 @@
 					<td><c:out value="${libro.descrizione}" /></td>
 					<td><c:out value="${libro.numeroPagine}" /></td>
 					<td>
-						<a href="assegna-libro?codice-libro=<c:out value='${libro.codiceLibro}'/>&numero-tessera=<c:out value='${utente.id}'/>&stato=PR" > <button>Prenota Libro</button> </a>
+						<a href="assegna-libro?codice-libro=<c:out value='${libro.codiceLibro}'/>&numero-tessera=<c:out value='${utente.id}'/>&stato=PR" > <button type="button" class="btn btn-warning">Prenota Libro</button> </a>
 					</td>
 				</tr>
 			</c:forEach>
