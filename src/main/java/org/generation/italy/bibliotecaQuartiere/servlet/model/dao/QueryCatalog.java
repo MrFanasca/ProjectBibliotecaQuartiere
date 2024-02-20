@@ -24,7 +24,7 @@ public class QueryCatalog {
 	public static final String loadLibriLiberi =
 			" SELECT * "
 		  + "   FROM libro "
-		  + "  WHERE stato = LI ";
+		  + "  WHERE stato = 'LI' ";
 	
 	public static final String loadLibriByPrimaryKey =
 			" SELECT * "

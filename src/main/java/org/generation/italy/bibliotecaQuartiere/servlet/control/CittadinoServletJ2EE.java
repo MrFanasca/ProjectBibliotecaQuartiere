@@ -4,14 +4,17 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
+import org.generation.italy.bibliotecaQuartiere.security.DatabaseUserDetails;
+import org.generation.italy.bibliotecaQuartiere.security.model.Utente;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.BibliotecaModelException;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.JdbcConnection;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.dao.AssegnazioneDao;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.dao.CittadinoDao;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.dao.LibroDao;
-import org.generation.italy.bibliotecaQuartiere.servlet.model.dao.Triggers;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.entity.Assegnazione;
 import org.generation.italy.bibliotecaQuartiere.servlet.model.entity.Libro;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import jakarta.servlet.RequestDispatcher;
@@ -50,7 +53,6 @@ public class CittadinoServletJ2EE extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.println("do get cittadino entrato");
 		executeAction(request, response);
 	}
 
@@ -91,11 +93,10 @@ public class CittadinoServletJ2EE extends HttpServlet {
 		
 		try {
 
-			List<Libro> listLibri = libroDao.loadAllLibro();
+			List<Libro> listLibri = libroDao.loadLibriLiberi();
 			request.setAttribute("listLibri", listLibri);
-
+			request.setAttribute("pagina", "elencoLibri");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/elenco-libri.jsp");
-			System.out.println("forward cittadino");
 			dispatcher.forward(request, response);
 
 		} catch (Exception e) {
@@ -108,13 +109,19 @@ public class CittadinoServletJ2EE extends HttpServlet {
 	private void actionAssegnaLibro(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ServletException {
 
-		String numeroTessera = request.getParameter("numero-tessera") != null ? request.getParameter("numero-tessera"): "";
+		Authentication authentication = 
+				SecurityContextHolder.getContext().getAuthentication();
+				DatabaseUserDetails dbUser=(DatabaseUserDetails) authentication.getPrincipal();
+				Utente u=dbUser.getUtente();
+			    Integer nrTessera = u.getCittadino().getNumeroTessera();
+				System.out.println("numero t:" + nrTessera);
+		
 		String codiceLibro = request.getParameter("codice-libro") != null ? request.getParameter("codice-libro") : "";
 		String cambioStato = request.getParameter("stato") != null ? request.getParameter("stato") : "";
 
 		try {
 
-			int nrTessera = Integer.parseInt(numeroTessera);
+			
 			//Triggers.checkBeforeInsertAssegnazione(codiceLibro, nrTessera);
 			Assegnazione assegnazione = new Assegnazione(nrTessera, codiceLibro);
 			Libro libro = new Libro(codiceLibro, cambioStato);
@@ -133,15 +140,19 @@ public class CittadinoServletJ2EE extends HttpServlet {
 	
 	private void actionLibriPrenotati(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ServletException {
-		
-		String numeroTessera = request.getParameter("numero-tessera") != null ? request.getParameter("numero-tessera"): "";
+		Authentication authentication = 
+				SecurityContextHolder.getContext().getAuthentication();
+				DatabaseUserDetails dbUser=(DatabaseUserDetails) authentication.getPrincipal();
+				Utente u=dbUser.getUtente();
+			    Integer nrTessera = u.getCittadino().getNumeroTessera();
+				System.out.println("numero t:" + nrTessera);
 		try {
 
-			Integer nrTessera = Integer.parseInt(numeroTessera);
+			
 
 			List<Assegnazione> listPrenotazioni = assegnazioneDao.mostraPrenotazioni(nrTessera);
 			request.setAttribute("listPrenotazioni", listPrenotazioni);
-			
+			request.setAttribute("pagina", "libriPrenotati");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/libri-prenotati.jsp");
 
 			dispatcher.forward(request, response);

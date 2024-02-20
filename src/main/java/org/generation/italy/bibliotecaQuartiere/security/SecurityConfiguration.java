@@ -47,7 +47,6 @@ public class SecurityConfiguration {
 					"/",
 					"/servlet/cittadino/**",
 					"/WEB-INF/jsp/**",
-					"/WEB-INF/jsp/fragments/**",
 					"/webjars/**",				//necessarie per bootstrap e font awesome
 					"/css/**",			
 					"/img/**",

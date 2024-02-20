@@ -21,8 +21,7 @@
 				<th>Data Prenotazione</th>
 				<th>Data Consegna</th>
 				<th>Data Restituzione</th>
-				<th>Codice Libro</th>
-				<th>Pulsante</th>		
+				<th>Codice Libro</th>		
 			</tr>
 			<c:forEach var="libro" items="${listPrenotazioni}">			
 				<tr>

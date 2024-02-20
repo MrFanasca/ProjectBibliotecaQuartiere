@@ -65,7 +65,7 @@
 					<td><c:out value="${libro.descrizione}" /></td>
 					<td><c:out value="${libro.numeroPagine}" /></td>
 					<td>
-						<a href="assegna-libro?codice-libro=<c:out value='${libro.codiceLibro}'/>&numero-tessera=1&stato=PR" > <button>Prenota Libro</button> </a>
+						<a href="assegna-libro?codice-libro=<c:out value='${libro.codiceLibro}'/>&numero-tessera=<c:out value='${utente.id}'/>&stato=PR" > <button>Prenota Libro</button> </a>
 					</td>
 				</tr>
 			</c:forEach>

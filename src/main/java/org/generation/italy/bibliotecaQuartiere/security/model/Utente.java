@@ -69,6 +69,15 @@ public class Utente {
 
 	public void setRuoli(Set<Ruolo> ruoli) {
 		this.ruoli = ruoli;
-	}	
+	}
+
+	public Cittadino getCittadino() {
+		return cittadino;
+	}
+
+	public Volontario getVolontario() {
+		return volontario;
+	}
+	
 	
 }

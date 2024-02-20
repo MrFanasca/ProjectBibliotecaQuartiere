@@ -17,7 +17,7 @@ public class MainController {
 		Utente u=dbUser.getUtente();
 		boolean volontario=false;
 		boolean cittadino=false;
-//		model.addAttribute("utente", u);
+		model.addAttribute("utente", u);
 		for(Ruolo r:u.getRuoli()) {
 			if (r.getName().equals("cittadino"))
 				cittadino=true;
@@ -35,4 +35,5 @@ public class MainController {
 		System.out.println("entro cittadino2");
 		return "redirect:/servlet/cittadino/elenco-libri";
 	}
+	
 }
